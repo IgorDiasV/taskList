@@ -12,38 +12,31 @@ const task = db.sequelize.define('tasks',{
         allowNull: false
     },
     domingos: {
-        type: db.Sequelize.STRING,
-        allowNull: false
+        type: db.Sequelize.BOOLEAN,
     },
     segundas: {
         type: db.Sequelize.BOOLEAN,
-        allowNull: false
     },
     tercas: {
         type: db.Sequelize.BOOLEAN,
-        allowNull: false
     },
     quartas: {
         type: db.Sequelize.BOOLEAN,
-        allowNull: false
     },
     quintas: {
         type: db.Sequelize.BOOLEAN,
-        allowNull: false
     },
     sextas: {
         type: db.Sequelize.BOOLEAN,
-        allowNull: false
     },
     sabados: {
         type: db.Sequelize.BOOLEAN,
-        allowNull: false
     },
     horas: {
-        type: db.Sequelize.DATETIME,
+        type: db.Sequelize.TIME,
         allowNull: false
     },
-    tempos: {
+    intervalos: {
         type: db.Sequelize.INTEGER,
         allowNull: false
     },
