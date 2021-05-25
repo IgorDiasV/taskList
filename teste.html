@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    
+    <title>Task List</title>
+    <style>
+
+#maior{
+  left:30%;
+  display:block;
+  width: 557px;
+  height: 129px;
+  background: rgba(196,196,196,0);
+  opacity: 1;
+  position: absolute;
+  border: 1px solid rgba(196,196,196,1);
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  
+}
+.menor{
+  top:30px;
+  margin-left:10px;
+  display:inline-block;
+  width: 63px;
+  height: 62px;
+  background: white;
+  opacity: 1;
+  position: relative;
+  border:1px solid black;
+ 
+}
+    </style>
+</head>
+<body>
+    <div id="maior">
+        <div id='domingo' class="menor" onclick="mudarCor('domingo')"></div>
+        <div id="segunda" class="menor" onclick="mudarCor('segunda')">
+          
+        </div>
+        <div id='terca' class="menor" onclick="mudarCor('terca')">
+         
+        </div>
+        <div id='quarta' class="menor" onclick="mudarCor('quarta')">
+          
+        </div>
+        <div id='quinta' class="menor" onclick="mudarCor('quinta')">
+        
+        </div>
+        <div id='sexta' class="menor" onclick="mudarCor('sexta')">
+          
+        </div>
+        <div id='sabado' class="menor" onclick="mudarCor('sabado')">
+          
+        </div>
+        
+          
+       
+      </div>
+      <script>
+          function mudarCor(id)
+         {
+            div= document.getElementById(id)
+            
+            if(div.style.backgroundColor=='red' || div.style.backgroundColor=='' ){  
+                div.style.backgroundColor='green'
+            }else{
+                div.style.backgroundColor='red'
+        }
+}
+      </script>
+</body>
+</html>

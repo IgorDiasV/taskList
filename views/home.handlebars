@@ -56,6 +56,24 @@
 			cursor: pointer;
 			box-shadow: 0 4px 4px 0 rgba(0,0,0,.3);
 		}
+
+
+
+#maior{
+  left:30%;
+  display:block;
+  width: 329px;
+  height: 50px;
+  background: rgba(196,196,196,0);
+  opacity: 1;
+  position: relative;
+  border: 1px solid rgba(196,196,196,1);
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
 	</style>
 
 	<div id="modal-promocao" class="modal-container">
@@ -63,7 +81,14 @@
 			<button class="fechar">x</button>
 			<h3 class="subtitulo">Cadastre-se na Newsletter</h3>
 			<form>
-				<input type="text" class="input" placeholder="Email">
+				<input type="text" id ='titulo' class="input" placeholder="titulo">
+				<input type="text" id='hora' class="input" placeholder="hora">
+				<input type="text" id='tempo' class="input" placeholder="tempo">
+				<input type="checkbox" id='repeticao' class="input" placeholder="repeticao">
+				<div id="maior">
+        		 	<input id="teste"   type="radio" />
+					
+        		 </div>
 				<input type="button" class="button" value="Cadastrar">
 			</form>
 		</div>
@@ -88,10 +113,5 @@
 		const logo = document.querySelector('.contato .button');
 		logo.addEventListener('click', () => iniciaModal('modal-promocao'));
 
-		document.addEventListener('scroll', () => {
-			if(window.pageYOffset >800) {
-				iniciaModal('modal-promocao')
-			}
-		})
 
 	</script>
