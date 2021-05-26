@@ -57,8 +57,6 @@
 			box-shadow: 0 4px 4px 0 rgba(0,0,0,.3);
 		}
 
-
-
 #maior{
   justify-content: center;
   align-items: center;
@@ -69,10 +67,7 @@
   opacity: 1;
   position: relative;
   border: 1px solid rgba(196,196,196,1);
-  border-top-left-radius: 8px;
-  border-top-right-radius: 8px;
-  border-bottom-left-radius: 8px;
-  border-bottom-right-radius: 8px;
+  border-radius:8px;
 }
 
 
@@ -143,55 +138,52 @@
 		<div class="modal">
 			<button class="fechar">x</button>
 			<h3 class="subtitulo">Cadastre-se na Newsletter</h3>
-			<form>
-				<input type="text" id ='titulo' class="input" placeholder="titulo">
-				<input type="text" id='hora' class="input" placeholder="hora">
-				<input type="text" id='tempo' class="input" placeholder="tempo">
-				<input type="checkbox" id='repeticao' class="input" placeholder="repeticao">
+			<form action="/addTarefa" method="POST">
+				<input type="text" id ='titulo' class="input" placeholder="titulo" name="nomes">
+				<input type="text" id='hora' class="input" placeholder="hora" name="horas">
+				<input type="text" id='tempo' class="input" placeholder="tempo" name="intervalos">
+				<input type="checkbox" id='repeticao' class="input" placeholder="repeticao" name="replays">
 				<div id="maior">
         		 	
 						<div>
 							<div class="box">
-								<input id="domingo" type="checkbox">
+								<input id="domingo" type="checkbox" name="domingos">
 								<span class="check">D</span>
 								<label for="domingo">domingo</label>
 							</div>
 							<div class="box">
-								<input id="segunda" type="checkbox">
+								<input id="segunda" type="checkbox" name="segundas">
 								<span class="check">S</span>
 								<label for="segunda">segunda</label>
 							</div>
 							<div class="box">
-								<input id="terca" type="checkbox">
+								<input id="terca" type="checkbox" name="tercas">
 								<span class="check">T</span>
 								<label for="terca">terça</label>
 							</div>
 								<div class="box">
-								<input id="quarta" type="checkbox">
+								<input id="quarta" type="checkbox" name="quartas">
 								<span class="check">Q</span>
 								<label for="quarta">quarta</label>
 							</div>
 								<div class="box">
-								<input id="quinta" type="checkbox">
+								<input id="quinta" type="checkbox" name="quintas">
 								<span class="check">Q</span>
 								<label for="quinta">quinta</label>
 							</div>
 								<div class="box">
-								<input id="sexta" type="checkbox">
+								<input id="sexta" type="checkbox" name="sextas">
 								<span class="check">S</span>
 								<label for="sexta">sexta</label>
 							</div>
 								<div class="box">
-								<input id="sabado" type="checkbox">
+								<input id="sabado" type="checkbox" name="sabados">
 								<span class="check">S</span>
 								<label for="sabado">sabado</label>
 							</div>
 							</div>
-
-
-
         		 </div>
-				<input type="button" class="button" value="Cadastrar">
+				<button type="submit" class="button" value="Cadastrar">Cadastrar</button>
 			</form>
 		</div>
 	</div>
