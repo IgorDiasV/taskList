@@ -6,15 +6,33 @@ const task = require('./models/task')
 
 //Config
     //Template Engine
-        app.engine('handlebars', handlebars({defaultLayout: 'main'}))
+        app.engine('handlebars', handlebars({defaultLayout: 'main',
+
+        runtimeOptions: {
+            allowProtoPropertiesByDefault: true,
+            allowProtoMethodsByDefault: true,
+        },
+        
+     } ))
         app.set('view engine', 'handlebars')
     //Body Parser
         app.use(express.urlencoded({extended: false}))
         app.use(express.json())
         
 //Rotas
-    app.get('/', function(req,res){
-        res.render('home')
+   /* app.get('/', function(req,res){
+       task.findAll().then(function(tarefas){
+            console.log(tarefas)
+            res.render('teste',{tarefas:tarefas})
+    
+
+        
+    })})*/
+    app.get('/',function(req,res){ 
+        task.findAll().then(function(tarefas){
+            console.log(tarefas)
+            res.render('home',{tarefas:tarefas})
+        })
     })
     app.post('/addTarefa',function(req,res){
         task.create({

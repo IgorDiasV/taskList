@@ -133,7 +133,8 @@
 }
  
 	</style>
-
+	
+	
 	<div id="modal-promocao" class="modal-container">
 		<div class="modal">
 			<button class="fechar">x</button>
@@ -188,6 +189,15 @@
 		</div>
 	</div>
 	<button onclick = "iniciaModal()">TESTE </button>
+
+	{{#each tarefas}}
+	<hr>
+		<p>{{nomes}}</p>
+		<p>{{domingos}}</p>
+		
+	</hr>
+	{{/each}}
+	
 	<script>
 		function iniciaModal() {
 			modalID = 'modal-promocao'
@@ -206,6 +216,6 @@
 
 		const logo = document.querySelector('.contato .button');
 		logo.addEventListener('click', () => iniciaModal('modal-promocao'));
-
+		
 
 	</script>
