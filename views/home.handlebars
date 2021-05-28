@@ -1,221 +1,334 @@
 <style>
-		.modal-container {
-			width: 100vw;
-			height: 100vh;
-			background: rgba(0,0,0,.5);
-			position: fixed;
-			top: 0px;
-			left: 0px;
-			z-index: 2000;
-			display: none;
-			justify-content: center;
-			align-items: center;
+	.modal-container {
+		width: 100vw;
+		height: 100vh;
+		background: rgba(0, 0, 0, .5);
+		position: fixed;
+		top: 0px;
+		left: 0px;
+		z-index: 2000;
+		display: none;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.modal-container.mostrar {
+		display: flex;
+	}
+
+	.modal {
+		background: white;
+		width: 60%;
+		min-width: 300px;
+		padding: 40px;
+		border: 10px solid #988b7a;
+		box-shadow: 0 0 0 10px white;
+		position: relative;
+	}
+
+	@keyframes modal {
+		from {
+			opacity: 0;
+			transform: translate3d(0, -60px, 0);
 		}
 
-		.modal-container.mostrar {
-			display: flex;
+		to {
+			opacity: 1;
+			transform: translate3d(0, 0, 0);
 		}
+	}
 
-		.modal {
-			background: white;
-			width: 60%;
-			min-width: 300px;
-			padding: 40px;
-			border: 10px solid #988b7a;
-			box-shadow: 0 0 0 10px white;
-			position: relative;
-		}
+	.mostrar .modal {
+		animation: modal .3s;
+	}
 
-		@keyframes modal {
-			from {
-				opacity: 0;
-				transform: translate3d(0, -60px, 0);
-			}
-			to {
-				opacity: 1;
-				transform: translate3d(0, 0, 0);
-			}
-		}
+	.fechar {
+		position: absolute;
+		font-size: 1.2em;
+		top: -30px;
+		right: -30px;
+		width: 50px;
+		height: 50px;
+		border-radius: 50%;
+		border: 4px solid white;
+		background: #988b7a;
+		color: white;
+		font-family: "PT Mono", monospace;
+		cursor: pointer;
+		box-shadow: 0 4px 4px 0 rgba(0, 0, 0, .3);
+	}
 
-		.mostrar .modal {
-			animation: modal .3s;
-		}
-
-		.fechar {
-			position: absolute;
-			font-size: 1.2em;
-			top: -30px;
-			right: -30px;
-			width: 50px;
-			height: 50px;
-			border-radius: 50%;
-			border: 4px solid white;
-			background: #988b7a;
-			color: white;
-			font-family: "PT Mono", monospace;
-			cursor: pointer;
-			box-shadow: 0 4px 4px 0 rgba(0,0,0,.3);
-		}
-
-#maior{
-  justify-content: center;
-  align-items: center;
-  display:flex;
-  width: 340px;
-  height: 50px;
-  background: rgba(196,196,196,0);
-  opacity: 1;
-  position: relative;
-  border: 1px solid rgba(196,196,196,1);
-  border-radius:8px;
-}
+	#maior {
+		justify-content: center;
+		align-items: center;
+		display: flex;
+		width: 340px;
+		height: 50px;
+		background: rgba(196, 196, 196, 0);
+		opacity: 1;
+		position: relative;
+		border: 1px solid rgba(196, 196, 196, 1);
+		border-radius: 8px;
+	}
 
 
-.box {
-	 width: auto;
-	 margin: 5px;
-	 display: inline-flex;
-	 flex-direction: row;
-	 align-items: center;
-	 user-select: none;
-}
- .box label, .box span {
-	 font-size: 26px;
-	 color: #4d4d4d;
-	 position: absolute;
-	 z-index: 0;
-	 cursor: pointer;
-}
- .box label {
-	 color: transparent;
-}
- .box input {
-	 opacity: 0;
-	 visibility: hidden;
-	 position: absolute;
-}
- .box input:checked ~ .check {
-	 border-color: #00ea90;
-	 box-shadow: 0px 0px 0px 15px #00ea90 inset;
-}
- .box input:checked ~ .check::after {
-	 opacity: 1;
-	 transform: scale(1);
-}
- .box .check {
-	 width: 30px;
-	 height: 30px;
-	 display: flex;
-	 flex-direction: row;
-	 justify-content: center;
-	 align-items: center;
-	 position: relative;
-	 border-radius: 100px;
-	 background-color: #fff;
-	 border: 2px solid #00ea90;
-	 box-shadow: 0px 0px 0px 0px #00ea90 inset;
-	 transition: all 0.15s cubic-bezier(0, 1.05, 0.72, 1.07);
-}
- .box .check::after {
-	 content: '';
-	 width: 100%;
-	 height: 100%;
-	 opacity: 0;
-	 z-index: 4;
-	 position: absolute;
-	 transform: scale(0);
-	 background-size: 50%;
-	 background-image: url('http://s6.picofile.com/d/8392306668/c38c12a0-6db3-47d4-a80c-7dad8fab5186/checkmark.svg');
-	 background-repeat: no-repeat;
-	 background-position: center;
-	 transition-delay: 0.2s !important;
-	 transition: all 0.25s cubic-bezier(0, 1.05, 0.72, 1.07);
-}
- 
-	</style>
+	.box {
+		width: auto;
+		margin: 5px;
+		display: inline-flex;
+		flex-direction: row;
+		align-items: center;
+		user-select: none;
+	}
+
+	.box label,
+	.box span {
+		font-size: 26px;
+		color: #4d4d4d;
+		position: absolute;
+		z-index: 0;
+		cursor: pointer;
+	}
+
+	.box label {
+		color: transparent;
+	}
+
+	.box input {
+		opacity: 0;
+		visibility: hidden;
+		position: absolute;
+	}
+
+	.box input:checked~.check {
+		border-color: #00ea90;
+		box-shadow: 0px 0px 0px 15px #00ea90 inset;
+	}
+
+	.box input:checked~.check::after {
+		opacity: 1;
+		transform: scale(1);
+	}
+
+	.box .check {
+		width: 30px;
+		height: 30px;
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+		align-items: center;
+		position: relative;
+		border-radius: 100px;
+		background-color: #fff;
+		border: 2px solid #00ea90;
+		box-shadow: 0px 0px 0px 0px #00ea90 inset;
+		transition: all 0.15s cubic-bezier(0, 1.05, 0.72, 1.07);
+	}
+
+	.box .check::after {
+		content: '';
+		width: 100%;
+		height: 100%;
+		opacity: 0;
+		z-index: 4;
+		position: absolute;
+		transform: scale(0);
+		background-size: 50%;
+		background-image: url('http://s6.picofile.com/d/8392306668/c38c12a0-6db3-47d4-a80c-7dad8fab5186/checkmark.svg');
+		background-repeat: no-repeat;
+		background-position: center;
+		transition-delay: 0.2s !important;
+		transition: all 0.25s cubic-bezier(0, 1.05, 0.72, 1.07);
+	}
+
+	body {
+		font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+	}
+
+	.buttonADD {
+		padding: 8px 20px;
+		width: 150px;
+		margin: 18px 0 9px 0;
+		color: #3CE6AF;
+		background-color: #fff;
+		border: 3px solid #3CE6AF;
+		border-radius: 8px;
+		cursor: pointer;
+	}
+	.titulo{
+		width: 912px; 
+		padding-left:8px;
+	}
+	.tarefas{
+		display: grid;
+		grid-template-columns: auto auto auto auto auto auto auto;
+		justify-content: space-between;
+	}
+	.container_tarefas{
+		border-radius: 8px;
+		width: 912px;
+		border: 1px solid #C4C4C4;
+		margin: 10px;
+		margin-left: 0px;
+		padding: 8px;
+	}
+	.container_tarefas .letras_tarefas{
+		justify-content: space-between; 
+		display: flex;
+		text-transform: uppercase;
+	}
+	.letras_tarefas p{
+		margin: 5px;
+	}
+	.bloco_dias{
+		width: 62px;
+		height: 62px;
+		border: 1px solid #000;
+		margin: 5px;
+		text-align: center;
+	}
+	.letras_dias{
+		width: 62px;
+		margin: 5px;
+		text-align: center;
+		font-size: 50px;
+		align-items: center;
+		color:#898989;
+		
+	}
+	.letras_dias p{
+		margin: 0px;
+	}
+	.bloco_grande{
+		margin-left: 15%;
+	}
 	
-	
-	<div id="modal-promocao" class="modal-container">
-		<div class="modal">
-			<button class="fechar">x</button>
-			<h3 class="subtitulo">Cadastre-se na Newsletter</h3>
-			<form action="/addTarefa" method="POST">
-				<input type="text" id ='titulo' class="input" placeholder="titulo" name="nomes">
-				<input type="text" id='hora' class="input" placeholder="hora" name="horas">
-				<input type="text" id='tempo' class="input" placeholder="tempo" name="intervalos">
-				<input type="checkbox" id='repeticao' class="input" placeholder="repeticao" name="replays">
-				<div id="maior">
-        		 	
-						<div>
-							<div class="box">
-								<input id="domingo" type="checkbox" name="domingos">
-								<span class="check">D</span>
-								<label for="domingo">domingo</label>
-							</div>
-							<div class="box">
-								<input id="segunda" type="checkbox" name="segundas">
-								<span class="check">S</span>
-								<label for="segunda">segunda</label>
-							</div>
-							<div class="box">
-								<input id="terca" type="checkbox" name="tercas">
-								<span class="check">T</span>
-								<label for="terca">terça</label>
-							</div>
-								<div class="box">
-								<input id="quarta" type="checkbox" name="quartas">
-								<span class="check">Q</span>
-								<label for="quarta">quarta</label>
-							</div>
-								<div class="box">
-								<input id="quinta" type="checkbox" name="quintas">
-								<span class="check">Q</span>
-								<label for="quinta">quinta</label>
-							</div>
-								<div class="box">
-								<input id="sexta" type="checkbox" name="sextas">
-								<span class="check">S</span>
-								<label for="sexta">sexta</label>
-							</div>
-								<div class="box">
-								<input id="sabado" type="checkbox" name="sabados">
-								<span class="check">S</span>
-								<label for="sabado">sabado</label>
-							</div>
-							</div>
-        		 </div>
-				<button type="submit" class="button" value="Cadastrar">Cadastrar</button>
-			</form>
-		</div>
+
+</style>
+
+
+<div id="modal-promocao" class="modal-container">
+	<div class="modal">
+		<button class="fechar">x</button>
+		<h3 class="subtitulo">Nova tarefa:</h3>
+		<form action="/addTarefa" method="POST">
+			<input type="text" id='titulo' class="input" placeholder="titulo" name="nomes">
+			<input type="text" id='hora' class="input" placeholder="hora" name="horas">
+			<input type="text" id='tempo' class="input" placeholder="tempo" name="intervalos">
+			<input type="checkbox" id='repeticao' class="input" placeholder="repeticao" name="replays">
+			<div id="maior">
+
+				<div>
+					<div class="box">
+						<input id="domingo" type="checkbox" name="domingos">
+						<span class="check">D</span>
+						<label for="domingo">domingo</label>
+					</div>
+					<div class="box">
+						<input id="segunda" type="checkbox" name="segundas">
+						<span class="check">S</span>
+						<label for="segunda">segunda</label>
+					</div>
+					<div class="box">
+						<input id="terca" type="checkbox" name="tercas">
+						<span class="check">T</span>
+						<label for="terca">terça</label>
+					</div>
+					<div class="box">
+						<input id="quarta" type="checkbox" name="quartas">
+						<span class="check">Q</span>
+						<label for="quarta">quarta</label>
+					</div>
+					<div class="box">
+						<input id="quinta" type="checkbox" name="quintas">
+						<span class="check">Q</span>
+						<label for="quinta">quinta</label>
+					</div>
+					<div class="box">
+						<input id="sexta" type="checkbox" name="sextas">
+						<span class="check">S</span>
+						<label for="sexta">sexta</label>
+					</div>
+					<div class="box">
+						<input id="sabado" type="checkbox" name="sabados">
+						<span class="check">S</span>
+						<label for="sabado">sabado</label>
+					</div>
+				</div>
+			</div>
+			<button type="submit" class="button" value="Cadastrar">Confirmar</button>
+		</form>
 	</div>
-	<button onclick = "iniciaModal()">TESTE </button>
+</div>
+
+<div class="bloco_grande">
+	<div>
+		<button onclick="iniciaModal()" class="buttonADD">ADD TASK</button>
+	</div>
+
+	<div class="titulo">
+		<section class="tarefas">
+			<div class="letras_dias">
+				<p>D</p>
+			</div>
+			<div class="letras_dias">
+				<p>S</p>
+			</div>
+			<div class="letras_dias">
+				<p>T</p>
+			</div>
+			<div class="letras_dias">
+				<p>Q</p>
+			</div>
+			<div class="letras_dias">
+				<p>Q</p>
+			</div>
+			<div class="letras_dias">
+				<p>S</p>
+			</div>
+			<div class="letras_dias">
+				<p>S</p>
+			</div>
+		</section>
+	</div>
 
 	{{#each tarefas}}
-	<hr>
-		<p>{{nomes}}</p>
-		<p>{{domingos}}</p>
-		
-	</hr>
+	<div class="container_tarefas">
+		<div class="letras_tarefas">
+			<p>{{nomes}}</p>
+			<p>{{intervalos}} MIM</p>
+		</div>
+		<section class="tarefas">
+			<div class="bloco_dias">{{domingos}}</div>
+			<div class="bloco_dias">{{segundas}}</div>
+			<div class="bloco_dias">{{tercas}}</div>
+			<div class="bloco_dias">{{quartas}}</div>
+			<div class="bloco_dias">{{quintas}}</div>
+			<div class="bloco_dias">{{sextas}}</div>
+			<div class="bloco_dias">{{sabados}}</div>
+		</section>
+	</div>
+
 	{{/each}}
-	
-	<script>
-		function iniciaModal() {
-			modalID = 'modal-promocao'
-			
-				const modal = document.getElementById(modalID);
-				if(modal) {
-					modal.classList.add('mostrar');
-					modal.addEventListener('click', (e) => {
-						if(e.target.id == modalID || e.target.className == 'fechar') {
-							modal.classList.remove('mostrar');
-							localStorage.fechaModal = modalID;
-						}
-					});
+</div>
+<script>
+	function iniciaModal() {
+		modalID = 'modal-promocao'
+
+		const modal = document.getElementById(modalID);
+		if (modal) {
+			modal.classList.add('mostrar');
+			modal.addEventListener('click', (e) => {
+				if (e.target.id == modalID || e.target.className == 'fechar') {
+					modal.classList.remove('mostrar');
+					localStorage.fechaModal = modalID;
 				}
+			});
 		}
+	}
 
-		const logo = document.querySelector('.contato .button');
-		logo.addEventListener('click', () => iniciaModal('modal-promocao'));
-		
+	const logo = document.querySelector('.contato .button');
+	logo.addEventListener('click', () => iniciaModal('modal-promocao'));
 
-	</script>
+
+</script>
