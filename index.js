@@ -41,7 +41,7 @@ const task = require('./models/task')
             intervalos:req.body.intervalos,
             replays:req.body.replays=='on',
             domingos:req.body.domingos=='on',
-            segundas:req.body.segundos=='on',
+            segundas:req.body.segundas=='on',
             tercas:req.body.tercas=='on',
             quartas:req.body.quartas=='on',
             quintas:req.body.quintas=='on',
