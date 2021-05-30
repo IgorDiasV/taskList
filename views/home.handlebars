@@ -157,7 +157,7 @@
 	}
 	.titulo{
 		width: 912px; 
-		padding-left:8px;
+		padding-right:8px;
 	}
 	.tarefas{
 		display: grid;
@@ -200,10 +200,14 @@
 		margin: 0px;
 	}
 	.bloco_grande{
-		margin-left: 15%;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+	.bloco_grande .btn{
+		width: 912px;
 	}
 	
-
 </style>
 
 
@@ -262,7 +266,7 @@
 </div>
 
 <div class="bloco_grande">
-	<div>
+	<div class="btn">
 		<button onclick="iniciaModal()" class="buttonADD">ADD TASK</button>
 	</div>
 
