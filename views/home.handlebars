@@ -215,7 +215,7 @@
 	<div class="modal">
 		<button class="fechar">x</button>
 		<h3 class="subtitulo">Nova tarefa:</h3>
-		<form action="/addTarefa" method="POST">
+		<form action="/addTarefa" method="POST" name="myForm" onsubmit="return validateForm()">
 			<input type="text" id='titulo' class="input" placeholder="titulo" name="nomes">
 			<input type="text" id='hora' class="input" placeholder="hora" name="horas">
 			<input type="text" id='tempo' class="input" placeholder="tempo" name="intervalos">
@@ -333,6 +333,14 @@
 
 	const logo = document.querySelector('.contato .button');
 	logo.addEventListener('click', () => iniciaModal('modal-promocao'));
+	function validateForm() {
+		
 
+  		var x = document.forms["myForm"]["nomes"].value;
+  		if (x == "") {
+    		alert("Name must be filled out");
+    		return false;
+  		}
+}
 
 </script>
