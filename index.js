@@ -66,8 +66,8 @@ const check_task = require("./models/check_task");
         })
     })
 
-    let colaborador = task.query("SELECT id FROM tasks ORDER BY id DESC LIMIT 1;")
-    console.log(colaborador)
+    //let colaborador = task.query("SELECT id FROM tasks ORDER BY id DESC LIMIT 1;")
+    //console.log(colaborador)
 
 app.listen(12000, function(){
     console.log("Servidor rodando na url http://localhost:12000");
