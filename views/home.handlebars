@@ -360,13 +360,13 @@
 			<p>{{intervalos}} MIM</p>
 		</div>
 		<section class="tarefas">
-			<div class="bloco_dias">{{domingos}}</div>
-			<div class="bloco_dias">{{segundas}}</div>
-			<div class="bloco_dias">{{tercas}}</div>
-			<div class="bloco_dias">{{quartas}}</div>
-			<div class="bloco_dias">{{quintas}}</div>
-			<div class="bloco_dias">{{sextas}}</div>
-			<div class="bloco_dias">{{sabados}}</div>
+			<div class="bloco_dias" id={{id}} diaDeTarefa={{domingos}} dia="0"></div>
+			<div class="bloco_dias" diaDeTarefa={{segundas}} dia="1"></div>
+			<div class="bloco_dias" diaDeTarefa={{tercas}} dia="2"></div>
+			<div class="bloco_dias" diaDeTarefa={{quartas}} dia="3"></div>
+			<div class="bloco_dias" diaDeTarefa={{quintas}} dia="4"></div>
+			<div class="bloco_dias" diaDeTarefa={{sextas}} dia="5"></div>
+			<div class="bloco_dias" diaDeTarefa={{sabados}} dia="6"></div>
 		</section>
 	</div>
 
@@ -387,6 +387,25 @@
 			});
 		}
 	}
+	let div_dias = document.getElementsByClassName("bloco_dias");
+   
+    for(i=0;i<div_dias.length;i++)
+    {
+        if(div_dias[i].getAttribute('diaDeTarefa')=='false')
+        {
+            div_dias[i].style.backgroundColor="#c4c4c4"
+        }else
+        {
+            data = new Date();
+            if(data.getDay()>div_dias[i].getAttribute('dia'))
+            {
+                div_dias[i].style.backgroundColor="#FD6068"
+            }
+
+        }
+    }
+
+
 
 	const logo = document.querySelector('.contato .button');
 	logo.addEventListener('click', () => iniciaModal('modal-promocao'));
