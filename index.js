@@ -2,7 +2,8 @@ const express = require("express");
 const app = express();
 const handlebars = require('express-handlebars')
 const bodyParser = require('body-parser')
-const task = require('./models/task')
+const task = require('./models/task');
+const check_task = require("./models/check_task");
 
 //Config
     //Template Engine
@@ -47,15 +48,26 @@ const task = require('./models/task')
             quintas:req.body.quintas=='on',
             sextas:req.body.sextas=='on',
             sabados:req.body.sabados=='on'
+        })
+        check_task.create({
+            domingos:req.body.domingos=='on',
+            segundas:req.body.segundas=='on',
+            tercas:req.body.tercas=='on',
+            quartas:req.body.quartas=='on',
+            quintas:req.body.quintas=='on',
+            sextas:req.body.sextas=='on',
+            sabados:req.body.sabados=='on'
         }).then(function()
         {
            res.redirect('/')
         }).catch(function(erro)
         {
-            if(req.body.domingos == 'on')
-                console.log("ocorreu o seguinte erro: "+ req.body.domingos)
+            console.log("ocorreu o seguinte erro: "+ erro)
         })
     })
+
+    let colaborador = task.query("SELECT id FROM tasks ORDER BY id DESC LIMIT 1;")
+    console.log(colaborador)
 
 app.listen(12000, function(){
     console.log("Servidor rodando na url http://localhost:12000");
