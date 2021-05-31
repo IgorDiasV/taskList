@@ -18,10 +18,7 @@
 
 	.modal {
 		background: white;
-		width: 60%;
-		min-width: 300px;
 		padding: 40px;
-		border: 10px solid #988b7a;
 		box-shadow: 0 0 0 10px white;
 		position: relative;
 	}
@@ -51,8 +48,8 @@
 		height: 50px;
 		border-radius: 50%;
 		border: 4px solid white;
-		background: #988b7a;
-		color: white;
+		background: white;
+		color: #000;
 		font-family: "PT Mono", monospace;
 		cursor: pointer;
 		box-shadow: 0 4px 4px 0 rgba(0, 0, 0, .3);
@@ -69,6 +66,7 @@
 		position: relative;
 		border: 1px solid rgba(196, 196, 196, 1);
 		border-radius: 8px;
+		margin-top: 15px;
 	}
 
 
@@ -101,8 +99,8 @@
 	}
 
 	.box input:checked~.check {
-		border-color: #00ea90;
-		box-shadow: 0px 0px 0px 15px #00ea90 inset;
+		border-color: #3CE6AF;
+		box-shadow: 0px 0px 0px 15px #3CE6AF inset;
 	}
 
 	.box input:checked~.check::after {
@@ -120,8 +118,8 @@
 		position: relative;
 		border-radius: 100px;
 		background-color: #fff;
-		border: 2px solid #00ea90;
-		box-shadow: 0px 0px 0px 0px #00ea90 inset;
+		border: 2px solid #3CE6AF;
+		box-shadow: 0px 0px 0px 0px #3CE6AF inset;
 		transition: all 0.15s cubic-bezier(0, 1.05, 0.72, 1.07);
 	}
 
@@ -207,19 +205,78 @@
 	.bloco_grande .btn{
 		width: 912px;
 	}
-	
+	.button_c {
+		padding: 8px 20px;
+		width: 342px;
+		height: 38;
+		margin: 18px 0 9px 0;
+		color: #3CE6AF;
+		background-color: #fff;
+		border: 3px solid #3CE6AF;
+		border-radius: 8px;
+		cursor: pointer;
+	}
+	.input_titulo {
+		width: 100%;
+		height: 15px;
+		margin: 0 auto;
+		padding: 10px;
+		border: 1px solid #C4C4C4;
+		margin-bottom: 10px;
+		border-radius: 10px;
+		outline: none;
+	}
+	.input_hora {
+		width: 90px;
+		height: 12px;
+		padding: 10px;
+		border: 1px solid #C4C4C4;
+		margin-top: 10px;
+		margin-bottom: 10px;
+		margin-right: 10px;
+		border-radius: 10px;
+		outline: none;
+	}
+	.input_tempo {
+		width: 90px;
+		height: 12px;
+		padding: 10px;
+		border: 1px solid #C4C4C4;
+		margin-top: 10px;
+		margin-bottom: 10px;
+		border-radius: 10px;
+		outline: none;
+	}
+	.input_repeticao {
+		width: 22px;
+		height: 22px;
+		padding: 10px;
+		border: 1px solid #C4C4C4;
+		margin-top: 10px;
+		margin-bottom: 10px;
+		outline: none;
+	}
+	.bloco_form{
+		width: 342px;
+		height: 38px;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
 </style>
 
 
 <div id="modal-promocao" class="modal-container">
 	<div class="modal">
-		<button class="fechar">x</button>
+		<button class="fechar">X</button>
 		<h3 class="subtitulo">Nova tarefa:</h3>
 		<form action="/addTarefa" method="POST" name="myForm" onsubmit="return validateForm()">
-			<input type="text" id='titulo' class="input" placeholder="titulo" name="nomes">
-			<input type="text" id='hora' class="input" placeholder="hora" name="horas">
-			<input type="text" id='tempo' class="input" placeholder="tempo" name="intervalos">
-			<input type="checkbox" id='repeticao' class="input" placeholder="repeticao" name="replays">
+			<div class="bloco_form"><input type="text" id='titulo' class="input_titulo" placeholder="Título" name="nomes"></div>
+			<div class="bloco_form"> 
+				<input type="text" id='hora' class="input_hora" placeholder="Hora" name="horas">
+				<input type="text" id='tempo' class="input_tempo" placeholder="Tempo" name="intervalos">
+				<input type="checkbox" id='repeticao' class="input_repeticao" placeholder="repeticao" name="replays">
+			</div>
 			<div id="maior">
 
 				<div>
@@ -260,7 +317,7 @@
 					</div>
 				</div>
 			</div>
-			<button type="submit" class="button" value="Cadastrar">Confirmar</button>
+			<button type="submit" class="button_c" value="Cadastrar">Confirmar</button>
 		</form>
 	</div>
 </div>
@@ -338,7 +395,7 @@
 
   		var x = document.forms["myForm"]["nomes"].value;
   		if (x == "") {
-    		alert("Name must be filled out");
+    		alert("Título precisa ser preenchido.");
     		return false;
   		}
 }
