@@ -49,8 +49,8 @@ var  id;
             sextas:req.body.sextas=='on',
             sabados:req.body.sabados=='on'
         }).then(result => id=result.id)
-        console.log("aqui :", id)
-        check_task.create({
+        setTimeout(function(){
+            check_task.create({
             id_check:id,
             domingos:req.body.domingos=='on',
             segundas:req.body.segundas=='on',
@@ -59,13 +59,17 @@ var  id;
             quintas:req.body.quintas=='on',
             sextas:req.body.sextas=='on',
             sabados:req.body.sabados=='on'
-        }).then(function()
+        }
+        ).then(function()
         {
            res.redirect('/')
         }).catch(function(erro)
         {
             console.log("ocorreu o seguinte erro: "+ erro)
         })
+    },3000)
+        
+        
     })
 
     //let colaborador = task.query("SELECT id FROM tasks ORDER BY id DESC LIMIT 1;")
