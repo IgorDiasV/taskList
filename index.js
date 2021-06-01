@@ -4,7 +4,8 @@ const handlebars = require('express-handlebars')
 const bodyParser = require('body-parser')
 const task = require('./models/task');
 const check_task = require("./models/check_task");
-var  id;
+var id;
+var teste;
 //Config
     //Template Engine
         app.engine('handlebars', handlebars({defaultLayout: 'main',
@@ -29,9 +30,11 @@ var  id;
         
     })})*/
     app.get('/',function(req,res){ 
+        check_task.findAll().then(function(a){
+            teste=a
+        })
         task.findAll().then(function(tarefas){
-            console.log(tarefas)
-            res.render('home',{tarefas:tarefas})
+            res.render('home',{tarefas:tarefas,teste:teste})
         })
     })
     app.post('/addTarefa',function(req,res){
@@ -72,8 +75,10 @@ var  id;
         
     })
 
-    //let colaborador = task.query("SELECT id FROM tasks ORDER BY id DESC LIMIT 1;")
-    //console.log(colaborador)
+    check_task.findByPk(28).then(function(a){
+            console.log(a.id_check)
+        }
+    )
 
 app.listen(12000, function(){
     console.log("Servidor rodando na url http://localhost:12000");

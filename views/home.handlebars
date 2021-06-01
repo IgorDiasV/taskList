@@ -360,19 +360,46 @@
 			<p>{{intervalos}} MIM</p>
 		</div>
 		<section class="tarefas">
-			<div class="bloco_dias" id={{id}} diaDeTarefa={{domingos}} dia="0"></div>
-			<div class="bloco_dias" diaDeTarefa={{segundas}} dia="1"></div>
-			<div class="bloco_dias" diaDeTarefa={{tercas}} dia="2"></div>
-			<div class="bloco_dias" diaDeTarefa={{quartas}} dia="3"></div>
-			<div class="bloco_dias" diaDeTarefa={{quintas}} dia="4"></div>
-			<div class="bloco_dias" diaDeTarefa={{sextas}} dia="5"></div>
-			<div class="bloco_dias" diaDeTarefa={{sabados}} dia="6"></div>
+			<div class="bloco_dias" id={{id}} diaDeTarefa={{domingos}} dia="0" onclick="tarefaRealizada()"></div>
+			<div class="bloco_dias" diaDeTarefa={{segundas}} dia="1" onclick="tarefaRealizada()"></div>
+			<div class="bloco_dias" diaDeTarefa={{tercas}} dia="2" onclick="tarefaRealizada()"></div>
+			<div class="bloco_dias" diaDeTarefa={{quartas}} dia="3" onclick="tarefaRealizada()"></div>
+			<div class="bloco_dias" diaDeTarefa={{quintas}} dia="4" onclick="tarefaRealizada()"></div>
+			<div class="bloco_dias" diaDeTarefa={{sextas}} dia="5" onclick="tarefaRealizada()"></div>
+			<div class="bloco_dias" diaDeTarefa={{sabados}} dia="6" onclick="tarefaRealizada()"></div>
 		</section>
 	</div>
+	{{/each}}
 
+	{{#each teste}}
+		<p>teste:{{id_check}}</p>
+		<reilta id={{id_check}} 
+		domingoFeito={{domingos}} 
+		segundaFeito={{segundas}}
+		tercaFeito={{tercas}}
+		quartaFeito={{quartas}}
+		quintaFeito={{quintas}}
+		sextaFeito={{sextas}}
+		sabadoFeito={{sabados}}>
+			
+		</reilta>
 	{{/each}}
 </div>
 <script>
+	let div_dias = document.getElementsByClassName("bloco_dias");
+	
+	function tarefaRealizada(){
+		alert("teste")
+	}
+
+	var test = document.getElementsByTagName("reilta")
+	alert(test[0].id)
+
+		if(test[0].getAttribute('quartaFeito') == 0){
+			
+		}
+
+
 	function iniciaModal() {
 		modalID = 'modal-promocao'
 
@@ -387,7 +414,7 @@
 			});
 		}
 	}
-	let div_dias = document.getElementsByClassName("bloco_dias");
+	
    
     for(i=0;i<div_dias.length;i++)
     {
@@ -405,8 +432,6 @@
         }
     }
 
-
-
 	const logo = document.querySelector('.contato .button');
 	logo.addEventListener('click', () => iniciaModal('modal-promocao'));
 	function validateForm() {
@@ -417,6 +442,6 @@
     		alert("Título precisa ser preenchido.");
     		return false;
   		}
-}
+	}
 
 </script>
