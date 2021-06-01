@@ -36,6 +36,7 @@ var teste;
         task.findAll().then(function(tarefas){
             res.render('home',{tarefas:tarefas,teste:teste})
         })
+        
     })
     app.post('/addTarefa',function(req,res){
         
@@ -75,10 +76,7 @@ var teste;
         
     })
 
-    check_task.findByPk(28).then(function(a){
-            console.log(a.id_check)
-        }
-    )
+
 
 app.listen(12000, function(){
     console.log("Servidor rodando na url http://localhost:12000");
