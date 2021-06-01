@@ -52,13 +52,13 @@ var  id;
         setTimeout(function(){
             check_task.create({
             id_check:id,
-            domingos:req.body.domingos=='on',
-            segundas:req.body.segundas=='on',
-            tercas:req.body.tercas=='on',
-            quartas:req.body.quartas=='on',
-            quintas:req.body.quintas=='on',
-            sextas:req.body.sextas=='on',
-            sabados:req.body.sabados=='on'
+            domingos:false,
+            segundas:false,
+            tercas:false,
+            quartas:false,
+            quintas:false,
+            sextas:false,
+            sabados:false
         }
         ).then(function()
         {
