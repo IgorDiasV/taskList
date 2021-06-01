@@ -4,7 +4,7 @@ const handlebars = require('express-handlebars')
 const bodyParser = require('body-parser')
 const task = require('./models/task');
 const check_task = require("./models/check_task");
-
+var  id;
 //Config
     //Template Engine
         app.engine('handlebars', handlebars({defaultLayout: 'main',
@@ -26,7 +26,6 @@ const check_task = require("./models/check_task");
             console.log(tarefas)
             res.render('teste',{tarefas:tarefas})
     
-
         
     })})*/
     app.get('/',function(req,res){ 
@@ -36,6 +35,7 @@ const check_task = require("./models/check_task");
         })
     })
     app.post('/addTarefa',function(req,res){
+        
         task.create({
             nomes:req.body.nomes,
             horas:req.body.horas,
@@ -48,8 +48,10 @@ const check_task = require("./models/check_task");
             quintas:req.body.quintas=='on',
             sextas:req.body.sextas=='on',
             sabados:req.body.sabados=='on'
-        })
+        }).then(result => id=result.id)
+        console.log("aqui :", id)
         check_task.create({
+            id_check:id,
             domingos:req.body.domingos=='on',
             segundas:req.body.segundas=='on',
             tercas:req.body.tercas=='on',
