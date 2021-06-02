@@ -360,19 +360,18 @@
 			<p>{{intervalos}} MIM</p>
 		</div>
 		<section class="tarefas">
-			<div class="bloco_dias" id={{id}} diaDeTarefa={{domingos}} dia="0" onclick="tarefaRealizada()"></div>
-			<div class="bloco_dias" id={{id}} diaDeTarefa={{segundas}} dia="1" onclick="tarefaRealizada()"></div>
-			<div class="bloco_dias" id={{id}} diaDeTarefa={{tercas}} dia="2" onclick="tarefaRealizada()"></div>
-			<div class="bloco_dias" id={{id}} diaDeTarefa={{quartas}} dia="3" onclick="tarefaRealizada()"></div>
-			<div class="bloco_dias" id={{id}} diaDeTarefa={{quintas}} dia="4" onclick="tarefaRealizada()"></div>
-			<div class="bloco_dias" id={{id}} diaDeTarefa={{sextas}} dia="5" onclick="tarefaRealizada()"></div>
-			<div class="bloco_dias" id={{id}} diaDeTarefa={{sabados}} dia="6" onclick="tarefaRealizada()"></div>
+			<div class="bloco_dias" id={{id}} diaDeTarefa={{domingos}} dia="0" onclick="realizaTarefa('{{domingos}}','{{id}}',0)"></div>
+			<div class="bloco_dias" id={{id}} diaDeTarefa={{segundas}} dia="1" onclick="realizaTarefa('{{segundas}}','{{id}}',1)"></div>
+			<div class="bloco_dias" id={{id}} diaDeTarefa={{tercas}} dia="2" onclick="realizaTarefa('{{tercas}}','{{id}}',2)"></div>
+			<div class="bloco_dias" id={{id}} diaDeTarefa={{quartas}} dia="3" onclick="realizaTarefa('{{quartas}}','{{id}}',3)"></div>
+			<div class="bloco_dias" id={{id}} diaDeTarefa={{quintas}} dia="4" onclick="realizaTarefa('{{quintas}}','{{id}}',4)"></div>
+			<div class="bloco_dias" id={{id}} diaDeTarefa={{sextas}} dia="5" onclick="realizaTarefa('{{sextas}}','{{id}}',5)"></div>
+			<div class="bloco_dias" id={{id}} diaDeTarefa={{sabados}} dia="6" onclick="realizaTarefa('{{sabados}}','{{id}}',6)"></div>
 		</section>
 	</div>
 	{{/each}}
 
 	{{#each teste}}
-		<p>teste:{{id_check}}</p>
 		<reilta id={{id_check}} 
 		domingoFeito={{domingos}} 
 		segundaFeito={{segundas}}
@@ -381,61 +380,65 @@
 		quintaFeito={{quintas}}
 		sextaFeito={{sextas}}
 		sabadoFeito={{sabados}}>
-			
+
 		</reilta>
+
+		
 	{{/each}}
 </div>
 <script>
-	function mudarCor(divs,cor,id,dia)
-	{
-		for(i =0;i<div_dias.length;i++)
-		{
-			if(divs[i].id==id && div_dias[i].getAttribute('dia')==dia)
-			{
-				
-				divs[i].style.backgroundColor=cor
-			}
-		}
-	}
 	let div_dias = document.getElementsByClassName("bloco_dias");
 
-
-	var verificaDia = document.getElementsByTagName("reilta")
-	
-	for (i = 0;i<verificaDia.length;i++)
+	function mudarCor(divs,cor,id,dia)
 	{
-			/*if(verificaDia[i].getAttribute('domingoFeito') == 'false'){
-		
-				mudarCor(div_dias,"#3CE6AF",verificaDia[i].id,0)
-			}*/
-			/*if(verificaDia[i].getAttribute('segundaFeito') == 'true'){
-		
-				mudarCor(div_dias,"#3CE6AF",verificaDia[i].id,1)
-			}*/
-			/*if(verificaDia[i].getAttribute('tercaFeito') == 'true'){
-		
-				mudarCor(div_dias,"#3CE6AF",verificaDia[i].id,2)
-			}*/
-			if(verificaDia[i].getAttribute('quartaFeito') == 'false'){
-		
-				mudarCor(div_dias,"#3CE6AF",verificaDia[i].id,3)
+		for(var i=0;i<div_dias.length;i++)
+		{
+			
+			if(divs[i].id==id && div_dias[i].getAttribute('dia')==dia)
+			{	
+				divs[i].style.backgroundColor=cor
 			}
-			if(verificaDia[i].getAttribute('quintaFeito') == 'true'){
-		
-				mudarCor(div_dias,"#3CE6AF",verificaDia[i].id,4)
-			}/*
-			if(verificaDia[i].getAttribute('sextaFeito') == 'true'){
-		
-				mudarCor(div_dias,"#3CE6AF",verificaDia[i].id,5)
-			}
-			if(verificaDia[i].getAttribute('sabadoFeito') == 'true'){
-		
-				mudarCor(div_dias,"#3CE6AF",verificaDia[i].id,6)
-			}*/
+		}	
 	}
 
-
-
+	function realizaTarefa(dia,id,dia_id){
+		if(dia=='true'){
+			mudarCor(div_dias,'#3CE6AF',id,dia_id)
+		}
+	}
+	
+	var verificaDia = document.getElementsByTagName("reilta")
+    for (var i = 0;i<verificaDia.length;i++)
+    {
+            if(verificaDia[i].getAttribute('domingoFeito') == 'true'){
+        
+                mudarCor(div_dias,"#3CE6AF",verificaDia[i].id,0)
+            }
+            if(verificaDia[i].getAttribute('segundaFeito') == 'true'){
+        
+                mudarCor(div_dias,"#3CE6AF",verificaDia[i].id,1)
+            }
+            if(verificaDia[i].getAttribute('tercaFeito') == 'true'){
+        
+                mudarCor(div_dias,"#3CE6AF",verificaDia[i].id,2)
+            }
+            if(verificaDia[i].getAttribute('quartaFeito') == 'true'){
+        
+                mudarCor(div_dias,"#3CE6AF",verificaDia[i].id,3)
+            }
+            if(verificaDia[i].getAttribute('quintaFeito') == 'true'){
+        
+                mudarCor(div_dias,"#3CE6AF",verificaDia[i].id,4)
+            }
+            if(verificaDia[i].getAttribute('sextaFeito') == 'true'){
+        
+                mudarCor(div_dias,"#3CE6AF",verificaDia[i].id,5)
+            }
+            if(verificaDia[i].getAttribute('sabadoFeito') == 'true'){
+        
+                mudarCor(div_dias,"#3CE6AF",verificaDia[i].id,6)
+            }
+    }
 
 	function iniciaModal() {
 		
@@ -454,12 +457,12 @@
 	}
 	
    
-    for(i=0;i<div_dias.length;i++)
+    for(var i=0;i<div_dias.length;i++)
     {
         if(div_dias[i].getAttribute('diaDeTarefa')=='false')
         {
             div_dias[i].style.backgroundColor="#c4c4c4"
-        }/*else
+        }else
         {
             data = new Date();
             if(data.getDay()>div_dias[i].getAttribute('dia'))
@@ -467,11 +470,11 @@
                 div_dias[i].style.backgroundColor="#FD6068"
             }
 
-        }*/
+        }
     }
 
 	const logo = document.querySelector('.contato .button');
-	logo.addEventListener('click', () => iniciaModal('modal-promocao'));
+	//logo.addEventListener('click', () => iniciaModal('modal-promocao'));
 	function validateForm() {
 		
 

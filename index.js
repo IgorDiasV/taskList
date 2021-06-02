@@ -71,7 +71,7 @@ var teste;
         {
             console.log("ocorreu o seguinte erro: "+ erro)
         })
-    },3000)
+    },1000)
         
         
     })
