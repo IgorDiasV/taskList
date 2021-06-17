@@ -386,7 +386,40 @@
 		
 	{{/each}}
 </div>
+<button onclick="enviarAlteracoes()">Salvar</button>
 <script>
+  idTarefaAlterados=""
+  diaAlterado=""
+
+  alteracoes=""
+  function enviarAlteracoes()
+  {
+        form = document.createElement('form')
+        form.style.display='none'
+        form.action='/atualizarBanco'
+        form.method='POST'
+        document.body.appendChild(form)
+        
+		inputDiaAlterado= document.createElement('input')
+        inputDiaAlterado.name="diaAlterado"
+		inputDiaAlterado.value=diaAlterado
+
+		inputIdTarefaAlterada= document.createElement('input')
+        inputIdTarefaAlterada.name="idTarefaAlterada"
+        inputIdTarefaAlterada.value=idTarefaAlterados
+		
+
+		inputAlteracao= document.createElement('input')
+        inputAlteracao.name="alteracoes"
+		inputAlteracao.value=alteracoes
+		
+        form.appendChild(inputDiaAlterado)
+		form.appendChild(inputIdTarefaAlterada)
+		form.appendChild(inputAlteracao)
+       
+        form.submit()
+
+  }
 	let div_dias = document.getElementsByClassName("bloco_dias");
 
 	function mudarCor(divs,cor,id,dia)
@@ -401,10 +434,37 @@
 		}	
 	}
 
+  function salvarAlteracoes(id,dia){
+	nomeDosDias=['domingoFeito','segundaFeito','tercaFeito','quartaFeito','quintaFeito','sextaFeito','sabadoFeito']
+    let reilta = document.getElementsByTagName("reilta");
+    let elementoEscolhido;
+    for(let i=0;i<reilta.length;i++)
+    {
+        if(reilta[i].id==id)
+        {
+          
+          idTarefaAlterados+=id+' '
+		
+		  diaAlterado+=dia+' '
+		  if(reilta[i].getAttribute(nomeDosDias[dia])=='false')
+		  {
+			  reilta[i].setAttribute(nomeDosDias[dia],true)
+			  alteracoes+='1 '
+		  }else{
+			  reilta[i].setAttribute(nomeDosDias[dia],false)
+			  alteracoes+='0 '
+		  }
+	
+        }
+    }
+    
+  }
 	function realizaTarefa(dia,id,dia_id){
 		if(dia=='true'){
+      
 			mudarCor(div_dias,'#3CE6AF',id,dia_id)
-		}
+      		salvarAlteracoes(id,dia_id)
+    }
 	}
 	
 	var verificaDia = document.getElementsByTagName("reilta")

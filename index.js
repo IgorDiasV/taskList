@@ -37,7 +37,17 @@ var teste;
             res.render('home',{tarefas:tarefas,teste:teste})
         })
         
+        
     })
+    app.post('/atualizarBanco',function(req,res){ 
+        atualizarBanco(req.body.idTarefaAlterada,req.body.diaAlterado,req.body.alteracoes) 
+        setTimeout(function(){
+            res.redirect('/')
+        },1000)
+        
+        
+    })
+
     app.post('/addTarefa',function(req,res){
         
         task.create({
@@ -81,3 +91,53 @@ var teste;
 app.listen(12000, function(){
     console.log("Servidor rodando na url http://localhost:12000");
 })
+
+function atualizarBanco(id,dia,alteracao)
+{
+    cadaId=id.split(' ')
+    cadaDia=dia.split(' ')
+    cadaAlteracao=alteracao.split(' ')
+    for (let i=0;i<cadaDia.length-1;i++)
+    {
+        if(cadaDia[i]=='0')
+        {
+            check_task.update({domingos:cadaAlteracao[i]},{
+                where:{'id_check':cadaId[i]}
+              })         
+        }else if(cadaDia[i]=='1')
+        {
+            check_task.update({segundas:cadaAlteracao[i]},{
+                where:{'id_check':cadaId[i]}
+              })         
+        }else if(cadaDia[i]=='2')
+        {
+            check_task.update({tercas:cadaAlteracao[i]},{
+                where:{'id_check':cadaId[i]}
+              })         
+        }else if(cadaDia[i]=='3')
+        {
+            check_task.update({quartas:cadaAlteracao[i]},{
+                where:{'id_check':cadaId[i]}
+              })         
+        }else if(cadaDia[i]=='4')
+        {
+            check_task.update({quintas:cadaAlteracao[i]},{
+                where:{'id_check':cadaId[i]}
+              })         
+        }else if(cadaDia[i]=='5')
+        {
+            check_task.update({sextas:cadaAlteracao[i]},{
+                where:{'id_check':cadaId[i]}
+              })         
+        }else if(cadaDia[i]=='6')
+        {
+            check_task.update({sabados:cadaAlteracao[i]},{
+                where:{'id_check':cadaId[i]}
+              })         
+        }
+    }
+   
+}
+//check_task.update({ domingos: "1" }, {
+//    where: { "id_check": "43" }
+//  });
