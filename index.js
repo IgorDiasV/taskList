@@ -18,6 +18,7 @@ var teste;
      } ))
         app.set('view engine', 'handlebars')
     //Body Parser
+        app.use(express.static('public'))
         app.use(express.urlencoded({extended: false}))
         app.use(express.json())
         
