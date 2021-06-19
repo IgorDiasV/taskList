@@ -43,36 +43,54 @@ idTarefaAlterados=""
 			}
 		}	
 	}
-
-  function salvarAlteracoes(id,dia){
-	nomeDosDias=['domingoFeito','segundaFeito','tercaFeito','quartaFeito','quintaFeito','sextaFeito','sabadoFeito']
-    let reilta = document.getElementsByTagName("reilta");
-    let elementoEscolhido;
-    for(let i=0;i<reilta.length;i++)
-    {
-        if(reilta[i].id==id)
-        {
-          
-          idTarefaAlterados+=id+' '
-		
-		  diaAlterado+=dia+' '
-		  if(reilta[i].getAttribute(nomeDosDias[dia])=='false')
-		  {
-			  reilta[i].setAttribute(nomeDosDias[dia],true)
-			  alteracoes+='1 '
-		  }else{
-			  reilta[i].setAttribute(nomeDosDias[dia],false)
-			  alteracoes+='0 '
-		  }
+    nomeDosDias=['domingoFeito','segundaFeito','tercaFeito','quartaFeito','quintaFeito','sextaFeito','sabadoFeito'] 
+    function salvarAlteracoes(id,dia){
 	
+        let reilta = document.getElementsByTagName("reilta");
+        let elementoEscolhido;
+        for(let i=0;i<reilta.length;i++)
+        {
+            if(reilta[i].id==id)
+            {
+          
+                idTarefaAlterados+=id+' '
+		
+		        diaAlterado+=dia+' '
+		        if(reilta[i].getAttribute(nomeDosDias[dia])=='false')
+		        {
+			        reilta[i].setAttribute(nomeDosDias[dia],true)
+			        alteracoes+='1 '
+		        }else{
+			        reilta[i].setAttribute(nomeDosDias[dia],false)
+			        alteracoes+='0 '
+		        }
+	
+            }
         }
-    }
     
   }
+  function escolherElementoPeloIdePeloDia (elementos,id,dia_id)
+  {
+    for (let i=0;i<elementos.length;i++)
+    {   
+        if(elementos[i].id==id)
+        {
+            if(elementos[i].getAttribute('dia')==dia_id)
+
+            return elementos[i];
+        }
+    }
+  }
 	function realizaTarefa(dia,id,dia_id){
-		if(dia=='true'){
-      
-			mudarCor(div_dias,'#3CE6AF',id,dia_id)
+		let elemento = escolherElementoPeloIdePeloDia(div_dias,id,dia_id)
+        if(dia=='true'){
+            
+            if(elemento.style.backgroundColor=='rgb(253, 96, 104)')
+            {
+			    mudarCor(div_dias,'#3CE6AF',id,dia_id)
+            }else{
+                mudarCor(div_dias,'#FD6068',id,dia_id)
+            }
       		salvarAlteracoes(id,dia_id)
     }
 	}
@@ -125,25 +143,44 @@ idTarefaAlterados=""
 			});
 		}
 	}
-	
+    
+	function escolherElementoPeloId(elementos,id)
+    {
+       
+       
+        
+        
+        for (let i=0;i<elementos.length;i++)
+        {   
+            if(elementos[i].id==id)
+            {
+                return elementos[i];
+            }
+        }
+    }
    
     for(var i=0;i<div_dias.length;i++)
     {
+        let elemento = escolherElementoPeloId(verificaDia,div_dias[i].id)
         if(div_dias[i].getAttribute('diaDeTarefa')=='false')
         {
             div_dias[i].style.backgroundColor="#c4c4c4"
         }else
         {
             data = new Date();
-            if(data.getDay()>div_dias[i].getAttribute('dia'))
+            
+
+            if(data.getDay()>div_dias[i].getAttribute('dia') && elemento.getAttribute(nomeDosDias[div_dias[i].getAttribute('dia')])=='false')
             {
+               
                 div_dias[i].style.backgroundColor="#FD6068"
             }
 
         }
     }
-
-	const logo = document.querySelector('.contato .button');
+    seila=escolherElementoPeloId(verificaDia,'44')
+	
+    const logo = document.querySelector('.contato .button');
 	//logo.addEventListener('click', () => iniciaModal('modal-promocao'));
 	function validateForm() {
 		
