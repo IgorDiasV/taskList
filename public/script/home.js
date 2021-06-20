@@ -85,11 +85,13 @@ idTarefaAlterados=""
 		let elemento = escolherElementoPeloIdePeloDia(div_dias,id,dia_id)
         if(dia=='true'){
             
-            if(elemento.style.backgroundColor=='rgb(253, 96, 104)')
+            if(elemento.style.backgroundColor=='rgb(60, 230, 175)')
             {
-			    mudarCor(div_dias,'#3CE6AF',id,dia_id)
+			    mudarCor(div_dias,'#FD6068',id,dia_id)
             }else{
-                mudarCor(div_dias,'#FD6068',id,dia_id)
+               
+                
+                mudarCor(div_dias,'#3CE6AF',id,dia_id)
             }
       		salvarAlteracoes(id,dia_id)
     }

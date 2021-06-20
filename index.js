@@ -48,7 +48,17 @@ var teste;
         
         
     })
-
+    app.get('/delete/:n',function(req,res){
+       
+        check_task.destroy({where:{'id_check':req.params.n}})
+        
+        setTimeout(function()
+        {
+            task.destroy({where:{'id':req.params.n}})
+        },500)
+        setTimeout(function(){
+            res.redirect('/')
+        },2000)})
     app.post('/addTarefa',function(req,res){
         
         task.create({
